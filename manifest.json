@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "Chess Helper",
+    "version": "1.0.1",
+    
+    "description": "A tool to help in Chess",
+
+    "browser_action": {
+        "default_icon": "icons/icon.png",
+        "default_title": "ChessHelper",
+        "default_popup": "popup/popup.html"
+    },
+
+    "content_scripts": [
+        {
+          "matches": ["*://*.chess.com/*"],
+          "js": ["chess.com/script.js"],
+          "run_at": "document_idle"
+        }
+    ]
+
+}
