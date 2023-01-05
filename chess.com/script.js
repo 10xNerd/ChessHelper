@@ -1,5 +1,5 @@
-//chess logic
-import *  as logic from '../cprocess/logic.js'
+//chess logic import not working
+//import *  as logic from '../cprocess/logic.js'
 
 document.body.style.border = "2px solid red";
 
@@ -45,6 +45,8 @@ function init(){
     else player_color = 'b';
 
     getPieces();
+    logic();
+    render();
 
     console.log("board used: " + board.className);
     console.log("number of elements in board class:" + board_elements.length);
@@ -87,7 +89,7 @@ function render(){
     for(let i = 0; i < highlight_pieces.length;i++){
         var highlight = document.createElement('div');
         highlight.className = "highlight square-"+highlight_pieces[i][0] + highlight_pieces[i][1];//+ pieces[i][2] + pieces[i][3];
-        highlight.style = "background-color: rgba(0, 128, 0,10%);";
+        highlight.style = "background-color: rgba(" + highlight_pieces[i][2] + ",25%);";
         board.insertBefore(highlight,board_elements[0]);    
     }
 }
@@ -100,7 +102,19 @@ function clear(){
         }
     }
 }
-
+//function from cproccess/logic.js
+function logic(){
+    highlight_pieces = [];
+    for(let i = 0; i < pieces.length; i++){
+        if(pieces[i][0] === player_color){
+            highlight_pieces.push([pieces[i][2],pieces[i][3], '0,255,0'])
+        }
+        else if(pieces[i][0] !== player_color){
+            highlight_pieces.push([pieces[i][2],pieces[i][3], '255,0,0'])
+        }
+    }
+    
+}
 
 window.addEventListener('DOMContentLoaded', init());
 setInterval(function main(){
@@ -114,7 +128,7 @@ setInterval(function main(){
             console.log(pieces[i]);
         }
         console.log("A move has been made!!");
-        var highlight_pieces = logic.logic();
+        logic();
         clear();
         render();
     }
