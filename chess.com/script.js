@@ -8,8 +8,8 @@ var prev_pieces = new Array;
 
 var highlight_pieces = new Array;
 
-var board = document.getElementById('board-board');
-var board_elements = new Array;
+var chbrd = document.getElementById('board-board');
+var chbrd_elements = new Array;
 
 var player_color;
 
@@ -18,18 +18,18 @@ function init(){
     console.log("Extension in init()");
     //change based on which specific game played, vs player, bot, or analysis
     //the below code will make you want to kys, read with caution ⚠
-    if(typeof(board) == 'undefined' || board == null){
+    if(chbrd == null){
         console.log("board is not class board-board");
-        board = document.getElementById("board-analysis-board");
+        chbrd = document.getElementById("board-analysis-board");
         //If board is vs personality bots
-        if(typeof(board) == 'undefined' || board == null){
-            board = document.getElementById("board-vs-personalities");
-            if(typeof(board) == 'undefined' || board == null){
-                board = document.getElementById('board-solo-board');
-                if(typeof(board) == 'undefined' || board == null){
+        if(chbrd == null){
+            chbrd = document.getElementById("board-vs-personalities");
+            if(chbrd == null){
+                chbrd = document.getElementById('board-solo-board');
+                if(chbrd == null){
                     //WHY SO MANY BOARD TYPES LMAO
-                    board = document.getElementById('board-single');
-                    if(typeof(board) == 'undefined' || board == null){
+                    chbrd = document.getElementById('board-single');
+                    if(chbrd == null){
                         console.log("Can't find a board!!");
                         return 0;
                     }
@@ -38,25 +38,25 @@ function init(){
         }
     } 
 
-    board_elements = board.getElementsByTagName('div');
+    chbrd_elements = chbrd.getElementsByTagName('div');
 
     //check which side player is using board-flipped class
-    if(typeof(document.getElementsByClassName('board-flipped')[0]) == 'undefined')player_color = 'w'
+    if(typeof(document.getElementsByClassName('board-flipped')[0]) == null)player_color = 'w'
     else player_color = 'b';
 
     getPieces();
     logic();
     render();
 
-    console.log("board used: " + board.className);
-    console.log("number of elements in board class:" + board_elements.length);
+    console.log("board used: " + chbrd.className);
+    console.log("number of elements in board class:" + chbrd_elements.length);
     console.log("number of pieces starting on board: " + pieces.length);
     console.log("player is color:" + player_color)
     
 
    
 
-    if(board_elements.length == 0 && pieces.length == 0){
+    if(chbrd_elements.length == 0 && pieces.length == 0){
         console.log("Init unsuccessful! Reload to try again");
         return 0;
     }
@@ -69,8 +69,8 @@ function init(){
 function getPieces(){
     //clear array
     pieces = [];
-    for(let i = 0; i < board_elements.length; i++){
-        let pre = board_elements[i].className;
+    for(let i = 0; i < chbrd_elements.length; i++){
+        let pre = chbrd_elements[i].className;
         //filter out elements
         if(pre.includes("piece")){
             //split pre into an array for characters
@@ -90,15 +90,15 @@ function render(){
         var highlight = document.createElement('div');
         highlight.className = "highlight square-"+highlight_pieces[i][0] + highlight_pieces[i][1];//+ pieces[i][2] + pieces[i][3];
         highlight.style = "background-color: rgba(" + highlight_pieces[i][2] + ",25%);";
-        board.insertBefore(highlight,board_elements[0]);    
+        chbrd.insertBefore(highlight,chbrd_elements[0]);    
     }
 }
 function clear(){
     //clear all highlighting
     //go backwards to clear ALL at once
-    for(let i = board_elements.length - 1; i >= 0;i--){
-        if(board_elements[i].className.includes("highlight")){
-            board_elements[i].remove();
+    for(let i = chbrd_elements.length - 1; i >= 0;i--){
+        if(chbrd_elements[i].className.includes("highlight")){
+            chbrd_elements[i].remove();
         }
     }
 }
