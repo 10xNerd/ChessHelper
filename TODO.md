@@ -1,0 +1,4 @@
+    - Create logic to detect piece attack, guards, and pins - MOST IMPORTANT
+    - Include Chess.com built-in arrow 
+    - Include Stockfish.js to evaluate & help 
+    - Make popup page
