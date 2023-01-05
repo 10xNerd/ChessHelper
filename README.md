@@ -22,7 +22,7 @@
     I also suggest to use as a tool to learn & improve in chess, don't ruin player's <br />days, but do whatever you want
 
 #####Note <br />
-    - I am an unexperienced developer, this is my first cheat.<br />
+    - I am an inexperienced developer, this is my first cheat.<br />
         I don't know programmer notation so some stuff may be confusing.<br />
         But I'm learning and will improve :)<br />
     - This has only been tested for Chrome on Windows<br />
