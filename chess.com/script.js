@@ -41,7 +41,7 @@ function init(){
     chbrd_elements = chbrd.getElementsByTagName('div');
 
     //check which side player is using board-flipped class
-    if(typeof(document.getElementsByClassName('board-flipped')[0]) == null)player_color = 'w'
+    if(document.getElementsByClassName('board-flipped')[0] == null)player_color = 'w'
     else player_color = 'b';
 
     getPieces();
@@ -79,6 +79,7 @@ function getPieces(){
             pieces.push([pre_array[6],pre_array[7],pre_array[16],pre_array[17]]);
         }
     }
+    
 
     
 
